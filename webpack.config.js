@@ -12,21 +12,28 @@ module.exports = {
       publicPath: '/',
       filename: 'main.js'
   },
-  debug: true,
+  // debug: true,
   devtool: 'source-map',
   module: {
-    loaders: [
+    rules: [
       { 
         test: /\.js$/,
         include: path.join(__dirname, 'src'),
-        loader: 'babel-loader',
-        query: {
-          presets: ['es2015']
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['es2015']
+          }
         }
       },
       { 
         test: /\.less$/,
-        loader: "style!css!autoprefixer!less"
+        use: [
+          'style-loader',
+          'css-loader', 
+          'autoprefixer-loader', 
+          'less-loader'
+        ]
       },
     ]
   },
