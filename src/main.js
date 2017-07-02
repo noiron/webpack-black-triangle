@@ -24,7 +24,6 @@ function log(target, name, descriptor) {
 
   descriptor.value = function() {
     console.log(`Calling "${name}" with`, arguments);
-    console.log('999999999');
 
     return oldValue.apply(null, arguments);
   };
@@ -36,7 +35,3 @@ const math = new Math();
 
 // passed parameters should get logged now
 math.add(2, 4);
-
-console.log('hahaha');
-console.log('yyyyy');
-console.log('uu');
